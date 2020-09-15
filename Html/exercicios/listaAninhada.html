@@ -1,10 +1,10 @@
 <h1>Projeto</h1>
 <ul class="tree">
     <li>
-        Backend *
+       <span class="spanzinho">Backend *</span> 
         <ul>
             <li>
-                App *
+                <span class="spanzinho">App *</span>
                 <ul>
                     <li>Produto.js</li>
                     <li>Usuario.js</li>
@@ -12,7 +12,7 @@
                 </ul>
             </li>
             <li>
-                Config *
+                <span class="spanzinho">Config *</span>
                 <ul>
                     <li>Banco.js</li>
                     <li>Rota.js</li>
@@ -22,10 +22,10 @@
         </ul>
     </li>
     <li>
-        Frontend *
+        <span class="spanzinho">Frontend *</span>
         <ul>
             <li>
-                Public *
+                <span class="spanzinho">Public *</span>
                 <ul>
                     <li>App.css</li>
                     <li>App.js</li>
@@ -40,4 +40,31 @@
 
 <script>
     console.log('arvore...')
+    document.querySelectorAll('.spanzinho').forEach(element => {
+        
+        element.onclick = function(e){
+            const ulFather = element.closest('ul')
+            const dFather = ulFather.style.color
+
+            const ul = element.nextElementSibling
+            const d = ul.style.color 
+
+            if(dFather === 'blue'){
+                ul.style.color === 'blue'
+            } else{
+                ul.style.color = d === 'blue' ? null : 'blue'
+                if ( d === 'blue') {
+                    ul.style.color = null
+                    ulFather.querySelectorAll('.spanzinho').forEach(element2 => {
+            
+                        const ulSon = element2.nextElementSibling
+                        ulSon.style.color = null
+                    });
+                } else {
+                    ul.style.color = 'blue'
+                }
+            }
+        }
+
+    });
 </script>
